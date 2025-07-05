@@ -3,11 +3,7 @@ import re
 import os
 
 
-def ler_dados_excel_avancado(caminho_arquivo: str, nome_aba: str) -> list[dict]:
-    """
-    Função de teste que lê os 5 primeiros registros de planilhas .xlsx ou .xlsb.
-    Usa pandas como um leitor universal.
-    """
+def ler_dados_excel(caminho_arquivo: str, nome_aba: str) -> list[dict]:
     print(f"\n--- Iniciando leitura da planilha com Pandas (MODO TESTE: 5 PRIMEIROS) ---")
     print(f"Arquivo: {caminho_arquivo}")
     print(f"Aba: {nome_aba}")
@@ -17,8 +13,6 @@ def ler_dados_excel_avancado(caminho_arquivo: str, nome_aba: str) -> list[dict]:
     try:
         # Determina o motor de leitura com base na extensão do arquivo
         engine = 'pyxlsb' if caminho_arquivo.endswith('.xlsb') else 'openpyxl'
-
-        # nrows=6 lê o cabeçalho + 5 linhas de dados, otimizando a leitura.
         df = pd.read_excel(
             caminho_arquivo,
             sheet_name=nome_aba,
